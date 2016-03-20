@@ -9,9 +9,9 @@ package com.github.gquintana.metrics.util;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -41,7 +41,7 @@ public class SqlObjectNameFactory implements ObjectNameFactory {
     public SqlObjectNameFactory() {
         this.defaultObjectFactory = new DefaultObjectNameFactory();
     }
-    
+
     private static final Pattern PATTERN = Pattern.compile(
             "(java\\.sql"           // Package
             + "\\.[A-Z]\\w+)"          // Class
@@ -57,7 +57,7 @@ public class SqlObjectNameFactory implements ObjectNameFactory {
             String database  = matcher.group(2);
             String sql       = matcher.group(3);
             String event     = matcher.group(4);
-            Hashtable<String, String> props = new Hashtable<>();
+            Hashtable<String, String> props = new Hashtable<String,String>();
             props.put("class", className);
             props.put("database", database);
             if (sql!=null) {
@@ -74,7 +74,7 @@ public class SqlObjectNameFactory implements ObjectNameFactory {
                 objectName = new ObjectName(domain, props);
             } catch (MalformedObjectNameException malformedObjectNameException) {
             }
-        } 
+        }
         if (objectName == null) {
             objectName = defaultObjectFactory.createName(type, domain, name);
         }
